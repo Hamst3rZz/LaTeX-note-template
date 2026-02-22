@@ -1,0 +1,184 @@
+\documentclass[UTF8]{ctexart}
+\usepackage{amsmath,amsthm,amsfonts,amssymb}
+\usepackage{mathtools}
+\usepackage{mathrsfs}
+\usepackage{bm}
+\usepackage{extarrows}
+\usepackage[a4paper, margin=1in]{geometry}
+\usepackage{float}
+\usepackage{indentfirst}
+\usepackage{anyfontsize}
+\usepackage{booktabs,multirow,multicol}
+\usepackage[shortlabels,inline]{enumitem}
+\usepackage{appendix}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{graphicx}
+\graphicspath{
+    {./figure/}{./figures/}{./image/}{./images/}{./graphic/}{./graphics/}{./picture/}{./pictures/}
+}
+\usepackage{subcaption}
+
+\usepackage[ruled,linesnumbered,noline]{algorithm2e}
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,linkcolor=,urlcolor=cyan
+}
+
+\renewcommand*{\proofname}{\normalfont\bfseries Proof}
+
+\usepackage{thmtools}
+
+%% define environments
+
+\declaretheorem[style=plain, name=定理, numbered=yes, numberwithin=section]{theorem}
+\declaretheorem[style=plain, name=定理, numbered=no]{theorem*}
+
+\declaretheorem[style=plain, name=命题, numbered=yes, sibling=theorem]{proposition}
+\declaretheorem[style=plain, name=命题, numbered=no]{proposition*}
+
+\declaretheorem[style=plain, name=推论, numbered=yes, sibling=theorem]{corollary}
+\declaretheorem[style=plain, name=推论, numbered=no]{corollary*}
+
+\declaretheorem[style=plain, name=引理, numbered=yes, sibling=theorem]{lemma}
+\declaretheorem[style=plain, name=引理, numbered=no]{lemma*}
+
+\declaretheorem[style=plain, name=陈述, numbered=yes, sibling=theorem]{claim}
+\declaretheorem[style=plain, name=陈述, numbered=no]{claim*}
+
+\declaretheorem[style=definition, name=定义, numbered=yes, numberwithin=section]{definition}
+\declaretheorem[style=definition, name=定义, numbered=no]{definition*}
+
+\declaretheorem[style=definition, name=例, numbered=yes, numberwithin=section]{example}
+\declaretheorem[style=definition, name=例, numbered=no]{example*}
+
+\declaretheorem[style=definition, name=习题, numbered=yes, numberwithin=section]{problem}
+\declaretheorem[style=definition, name=习题, numbered=no]{problem*}
+
+\declaretheorem[style=remark, name=注记, numbered=yes, numberwithin=section]{remark}
+\declaretheorem[style=remark, name=注记, numbered=no]{remark*}
+
+\declaretheoremstyle[headfont=\color{orange!80}\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt]{notestyle}
+
+\declaretheorem[style=notestyle, name=笔记, numbered=yes, numberwithin=section]{note}
+\declaretheorem[style=notestyle, name=笔记, numbered=no]{note*}
+
+\declaretheoremstyle[headfont=\bfseries, bodyfont=\normalfont, spaceabove=3pt, spacebelow=3pt, qed=\ensuremath{\square}]{solutionstyle}
+
+\declaretheorem[style=solutionstyle, name=解答, numbered=yes, numberwithin=section]{solution}
+\declaretheorem[style=solutionstyle, name=解答, numbered=no]{solution*}
+
+\usepackage[most]{tcolorbox}
+
+\newcommand{\newtcbenvironment}[2]{
+    \tcolorboxenvironment{#1}{#2, enhanced, breakable, sharp corners, boxrule=1pt}
+    \tcolorboxenvironment{#1*}{#2, enhanced, breakable, rounded corners, boxrule=1pt}
+}
+
+%% define styles
+
+\newtcbenvironment{theorem}{colframe=RoyalPurple, colback=RoyalPurple!8}
+\newtcbenvironment{proposition}{colframe=RoyalPurple, colback=RoyalPurple!8}
+\newtcbenvironment{corollary}{colframe=NavyBlue, colback=SkyBlue!8}
+\newtcbenvironment{lemma}{colframe=NavyBlue, colback=SkyBlue!8}
+\newtcbenvironment{claim}{colframe=NavyBlue, colback=SkyBlue!8}
+
+\newtcbenvironment{definition}{colframe=ForestGreen, colback=ForestGreen!5}
+\newtcbenvironment{example}{colframe=RawSienna, colback=RawSienna!5}
+\newtcbenvironment{problem}{colframe=WildStrawberry!30, colback=WildStrawberry!5}
+
+%% cbox
+\newtcolorbox{cbox}[1][]{%
+    enhanced,
+    breakable,
+    sharp corners,
+    leftrule=2pt, rightrule=0pt, toprule=0pt, bottomrule=0pt,
+    colframe=SkyBlue,
+    colback=SkyBlue!8,
+    #1
+}
+
+\title{LaTeX 笔记与定理模板使用说明}
+\author{你的名字}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{简介}
+
+本模板基于 \verb|ctexart| 文档类构建，专门为需要大量记录定理、定义和推导过程的理科笔记或作业设计。模板深度融合了 \verb|thmtools| 和 \verb|tcolorbox| 宏包，提供了一套色彩丰富、层次分明且易于扩展的定理环境。该说明文档由AI生成。
+
+\section{核心特色与内容展示}
+
+模板将不同的数学与逻辑环境进行了色彩分类，通过带颜色的背景框和边框来增强文档的视觉层次感。下面为您展示各个预设环境的实际渲染效果：
+
+\subsection{核心结论（紫色系列）}
+包含 \verb|theorem| (定理) 和 \verb|proposition| (命题)，适合放置最重要的核心结论。
+
+\begin{theorem}[欧拉公式]
+在复分析中，欧拉公式建立了三角函数与复指数函数之间的基本关系：
+$$ e^{ix} = \cos x + i\sin x $$
+\end{theorem}
+
+\subsection{推导与辅助（蓝色系列）}
+包含 \verb|corollary| (推论)、\verb|lemma| (引理) 和 \verb|claim| (陈述)，适合作为辅助性证明或衍生结论。
+
+\begin{lemma}[辅助引理]
+这里是引理的具体内容展示。辅助性推导通常使用蓝色系环境。
+\end{lemma}
+
+\subsection{概念引入（绿色系列）}
+包含 \verb|definition| (定义)，用于引入新概念或专业术语。
+
+\begin{definition*}[素数]
+大于1的自然数中，除了1和它本身以外不再有其他因数的自然数。注意，这是一个带星号 (\verb|*|) 的环境，因此没有编号，且边框为圆角。
+\end{definition*}
+
+\subsection{实例与练习（棕/粉系列）}
+包含 \verb|example| (例) 和 \verb|problem| (习题)。
+
+\begin{example}[具体案例]
+这是一个带有实例说明的环境展示。
+\end{example}
+
+\begin{problem}[课后思考]
+证明上述欧拉公式在 $x = \pi$ 时的特殊情况（即欧拉恒等式）。
+\end{problem}
+
+\subsection{特殊文本与引用块}
+包含无边框轻量环境（注记、笔记、解答）以及左侧高亮引用块 \verb|cbox|。
+
+\begin{note*}[注意事项]
+这是一条没有编号、带有橙色加粗标题的笔记。
+\end{note*}
+
+\begin{solution}
+因为 $2$ 的因数只有 $1$ 和 $2$，所以 $2$ 是一个素数。注意末尾自动生成的 QED ($\square$) 符号。
+\end{solution}
+
+\begin{cbox}
+\textbf{强调引用：} 这是一个侧边栏强调块 \verb|cbox|，非常适合用来做特别强调、补充说明或引用长文本。如果跨页内容较多，该盒子会自动分页。
+\end{cbox}
+
+\section{使用教程}
+
+\subsection{编译环境}
+由于本模板包含了大量的中文字符与高级字体/盒子设置，\textbf{必须使用 XeLaTeX 引擎进行编译} 才能保证正常输出。
+
+\subsection{带星号 (*) 与不带星号的区别}
+模板在定义盒子外观时进行了一项十分实用的设计：
+\begin{itemize}
+    \item \textbf{不带星号环境}（如 \verb|\begin{theorem}|）：环境\textbf{会自动编号}，并且盒子的四个角为\textbf{直角 (sharp corners)}。
+    \item \textbf{带星号环境}（如 \verb|\begin{theorem*}|）：环境\textbf{不会进行编号}，并且盒子的四个角为\textbf{圆角 (rounded corners)}。
+\end{itemize}
+
+\subsection{如何自定义修改}
+如果您需要在以后的笔记中修改颜色或新增定理环境（例如增加一个“假设”环境），请在导言区进行编辑：
+\begin{enumerate}
+    \item 在 \verb|%% define environments| 处使用 \verb|\declaretheorem| 定义环境的中文名称和编号逻辑。
+    \item 在 \verb|%% define styles| 处使用 \verb|\newtcbenvironment| 为环境绑定所需的边框颜色 (\verb|colframe|) 和背景颜色 (\verb|colback|)。
+\end{enumerate}
+
+\end{document}
