@@ -15,8 +15,8 @@
 
 ## 📸 效果预览
 
-![预览图1](./preview1.png)`
-![预览图2](./preview2.png)`
+![预览图1](./preview1.png)
+![预览图2](./preview2.png)
 
 ## 🚀 快速开始
 
